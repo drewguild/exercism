@@ -6,7 +6,8 @@ defmodule Words do
   """
   @spec count(String.t()) :: map
   def count(sentence) do
-    String.split(sentence)
+    unpunctuate(sentence)
+    |> String.split
     |> count_word_in_list
   end
 
@@ -18,5 +19,10 @@ defmodule Words do
     tally = count_word_in_list(remainder)
 
     Map.update(tally, word, 1, &(&1 + 1))
+  end
+
+  def unpunctuate(sentence) do
+    punctuation = ~r/[!-@[-`{-~]+/
+    String.replace(sentence, punctuation, "")
   end
 end
