@@ -15,8 +15,8 @@ defmodule Words do
   def count_word_in_list(list) do
     [word | remainder] = list
 
-    count = %{word => 1}
-    
-    Map.merge(count, count_word_in_list(remainder))
+    tally = count_word_in_list(remainder)
+
+    Map.update(tally, word, 1, &(&1 + 1))
   end
 end
