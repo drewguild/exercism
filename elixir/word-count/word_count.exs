@@ -22,7 +22,11 @@ defmodule Words do
   end
 
   def unpunctuate(sentence) do
-    punctuation = ~r/[!-@[-`{-~]+/
-    String.replace(sentence, punctuation, "")
+    punctuation_to_ignore = ~r/[!-,.-\/:-@[-^{-~]+/
+    punctuation_as_space = "_"
+
+
+    String.replace(sentence, punctuation_to_ignore, "")
+    |> String.replace(punctuation_as_space, " ")
   end
 end
