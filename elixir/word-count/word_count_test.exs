@@ -42,13 +42,11 @@ defmodule WordsTest do
     assert Words.count("two_words") == expected
   end
 
-  @tag :pending
   test "normalize case" do
     expected = %{"go" => 3}
     assert Words.count("go Go GO") == expected
   end
 
-  @tag :pending
   test "German" do
     expected = %{"götterfunken" => 1, "schöner" => 1, "freude" => 1}
     assert Words.count("Freude schöner Götterfunken") == expected

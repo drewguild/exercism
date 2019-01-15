@@ -7,6 +7,7 @@ defmodule Words do
   @spec count(String.t()) :: map
   def count(sentence) do
     unpunctuate(sentence)
+    |> String.downcase
     |> String.split
     |> count_word_in_list
   end
